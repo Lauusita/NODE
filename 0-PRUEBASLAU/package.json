@@ -1,0 +1,26 @@
+{
+  "name": "pruebaslau",
+  "version": "0.0.1",
+  "description": "hola",
+  "main": "lauConexionProof.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lauusita/NODE.git"
+  },
+  "author": "Laura",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lauusita/NODE/issues"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "homepage": "https://github.com/Lauusita/NODE#readme"
+}
