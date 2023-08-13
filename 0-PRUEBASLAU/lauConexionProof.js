@@ -2,21 +2,26 @@
 const {datosResta}= require('./lauproof');
 const argv = require('yargs')
 
-    .option('b', {
+    .option('s', {
 
-        alias: base,
+        alias: 'suma',
         type: 'number',
         demandOption: true
     })
-    
-    
-    
-    .argv
+    .option('h', {
+
+        alias: 'hasta',
+        type: 'number',
+        demandOption: true,
+    }).argv
 
 
 console.clear()
-console.log(argv);
 
+console.log(argv);
+datosResta(argv.b)
+.then((nombreArchivo=>console.log(nombreArchivo, 'creado')))
+.catch((err)=>console.log(err));
 
 
 
