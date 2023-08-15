@@ -19,9 +19,9 @@ const argv = require('yargs')
 console.clear()
 
 console.log(argv);
-datosResta(argv.b)
-.then((nombreArchivo=>console.log(nombreArchivo, 'creado')))
-.catch((err)=>console.log(err));
+datosResta(argv.s, argv.h)
+//.then((nombreArchivo=>console.log(nombreArchivo, 'creado')))
+//s.catch((err)=>console.log(err));
 
 
 
