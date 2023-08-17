@@ -2,6 +2,7 @@
 require('colors');
 
 const {inquirerMenu }= require('./helpers/inquirer');
+const {pausar} = require('./helpers/inquirer');
 
 console.clear();
 
@@ -9,13 +10,15 @@ const main = async()=>{
     
     console.log('hhola mundo');
 
-    let opt='';
+    let option='';
+    let question= '';
     do{
-        opt = await inquirerMenu(); // Se espera que la función dé resultado para ejecutarse
-        console.log({opt});
+        option = await inquirerMenu(); // Se espera que la función dé resultado para ejecutarse
+        console.log({option});
         
+        question = await pausar();
 
-    }while(opt !== '0'); 
+    }while(option != '0'); 
 
 }
 
