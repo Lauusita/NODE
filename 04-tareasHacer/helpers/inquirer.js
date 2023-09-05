@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const { validate } = require('uuid');
+
 
 require('colors');
 
@@ -94,8 +94,6 @@ const leerinput = async(message)=>{
     return desc;
 }
 
-
-
 const borrarListadoTareas = async(tareas =[])=>{
 
     const choices = tareas.map((tarea, i)=>{
@@ -139,10 +137,37 @@ const borrarListadoTareas = async(tareas =[])=>{
         return ok;
     }
 
+    const mostrarListadoCheck = async(tareas =[])=>{ // se hace una función asincrónica, con un argumento en un array
+
+        const choices = tareas.map((tarea, i)=>{ // se crea una constante que es igual a un método llamado map, que toma una función como argumento y esa función se aplica a cada elemento del arreglo original
+    
+            const idx = `${i+1}.`.green;
+            return {
+                value: tarea.id, // como value se toma el id seleccionado
+                name: `${idx} ${tarea.desc}`,
+                checked: (tarea.completado) ? true : false // se hace un condicional en el cual, si la tarea está en true, el check devolverá un true
+            }
+        });
+
+        const pregunta =[
+            {
+                type: 'checkbox',
+                name: 'ids',
+                message: 'seleccionar',
+                choices
+            }
+        ]
+        const {ids} = await inquirer.prompt(pregunta);
+        return ids;
+    
+        }
+
+
 module.exports ={
     inquirerMenu,
     pausar,
     leerinput,
     borrarListadoTareas,
-    confirmar
+    confirmar,
+    mostrarListadoCheck
 }

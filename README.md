@@ -1,6 +1,6 @@
 # NOTICAS
 
-Este es mi primer programa
+PARA 03-BasesNode se tendrá que:
  ```
 Options:
       --help     Show help                                             [boolean]

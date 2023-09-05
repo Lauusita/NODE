@@ -12,7 +12,8 @@ const {
     pausar, 
     leerinput,
     borrarListadoTareas,
-    confirmar
+    confirmar,
+    mostrarListadoCheck
 }= require('./helpers/inquirer');
 // Se importa las funciones de la carpeta inquierer
 
@@ -42,21 +43,22 @@ const main = async()=>{ // Se crea una función main que se ejecutará al final
                 
             break;
             case '2':
-                tareas.listadoCompleto()// Se llama el mismo listado que se encuentra dentro de la clase donde ya estará almacenada la información del primer punto 
+                tareas.listadoCompleto();// Se llama el mismo listado que se encuentra dentro de la clase donde ya estará almacenada la información del primer punto 
             break;
             case '3':
-                tareas.listarPendientesCompletadas()
+                tareas.listarPendientesCompletadas();
             break;
             case '4':
-                tareas.listarPendientes()
+                tareas.listarPendientes();
             break;
             case '5':
+                const ids = await mostrarListadoCheck(tareas.listadoArr);
+                tareas.toggleComplete(ids);
                 break;
             case '6':
-                const id = await borrarListadoTareas(tareas.listadoArr);
-                console.log(tareas.listadoArr.id);
-                const ok = await confirmar('Are you sure?')
-                if (id !== '0'){
+                const id = await borrarListadoTareas(tareas.listadoArr); // Se coloca un await para que no se itere de nuevo las opciones
+                const ok = await confirmar('Are you sure?') // esto se ejecutará después de ejecutar la constante id
+                if (id !== '0'){ // se determina que, si la opción es distinta a cancelar (0), se ejecuta la función borrarTarea con argumento del id y se muestra en consola que la tarea se borró correctamente.
                     if (ok){
                         tareas.borrarTarea(id);
                         console.log('tarea borrada correctamente');
@@ -64,6 +66,7 @@ const main = async()=>{ // Se crea una función main que se ejecutará al final
                     } 
                 }
             break;
+            
         }
         
         guardarDB( tareas.listadoArr)

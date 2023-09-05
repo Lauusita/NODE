@@ -1,5 +1,6 @@
 const { option } = require('yargs');
-const Tarea = require('./tarea')
+const Tarea = require('./tarea');
+const { green } = require('colors');
 
 class Tareas { // se crea una nueva clase
 
@@ -71,7 +72,7 @@ class Tareas { // se crea una nueva clase
             if (completado != null){
                 {desc};
                 contador +=1
-                console.log(`${(contador + '.').green} ${ desc} :: ${completado}` );
+                console.log(`${(contador + '.').green} ${ desc} :: ${(completado).green}` );
             }
         })
 
@@ -92,7 +93,27 @@ class Tareas { // se crea una nueva clase
             }
         })
     }
+
+    toggleComplete(ids =[]){
+
+        ids.forEach(ids=>{
+
+            const tarea = this._listado[ids];
+            if (!tarea.completado){
+                tarea.completado = new Date().toISOString(); // asigna la fecha actual
+            }
+        })
+
+        this.listadoArr.forEach(tarea =>{
+
+            if (!ids.includes(tarea.id)){
+                this._listado[tarea.id].completado = null
+
+            }
+        })
+    }
 }
+
 
 
 module.exports = Tareas;
