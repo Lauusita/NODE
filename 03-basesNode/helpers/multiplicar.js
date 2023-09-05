@@ -2,9 +2,6 @@
 const fs= require('fs');
 const colors = require('colors');
 
-
-
-
 const crearArchivo= async(base=5, listar = false, hasta = 10)=>{
 
     try {
@@ -29,8 +26,3 @@ module.exports={
     crearArchivo
 };
     
-
-
-
-
-

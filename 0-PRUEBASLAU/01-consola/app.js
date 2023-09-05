@@ -1,30 +1,22 @@
 require('colors');
+const {menu} = require('./inquire')
+
 const menuConsola = ()=>{
 
-    return new Promise(resolve=>{
-        console.clear()
-        console.log('BANDAS METAL\n'.magenta);
-        console.log('1. SLIPKNOT'.red);
-        console.log('2. METALLICA'.green);
-        console.log('3. KORN'.yellow);
-        console.log('4. AVENGED SEVENFOLD'.cyan);
-        console.log('5. MEGADETH'.blue);
-        console.log('0. SALIR\n')
+    console.clear()
+    let opt = '';
 
-        const log = require('readline').createInterface({
+    do{
+        
 
-            input: process.stdin,
-            output: process.stdout
+        switch (opt) {
+            case '1':
+                console.log('s')
+                break;
+        }
 
-        })
 
-        log.question('Seleccione una opción: ', (opt)=>{
-            resolve(opt);
-            log.close();
-            
-
-        })
-    })
+    } while(opt != '0')
 }
 
 const pausar = ()=>{
